@@ -1,0 +1,19 @@
+---
+Test
+---
+!define TEST_SYSTEM {slim}
+
+!path /Users/tong/Dropbox/softwareTesting2/fitnesseExample/SUT/target/classes
+ 
+|import|
+|fixtures|
+|shop|
+
+!|script 		     	|login dialog driver 	  |Bob            |xyzzy|
+|login with username   	|Bob 				  |and password   |xyzzy|
+|check 	           	|login message		  |Bob logged in. |
+|reject		     	|login with username 	  |Bob   |and password |aaaa|
+|check 	           	|login message		  |Bob not logged in. |
+|ensure		     	|login with username 	  |Bob	   |and password |xyzzy|
+|show				|number of login attempts |
+|$symbol=			|login message 		  |

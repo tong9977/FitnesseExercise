@@ -1,0 +1,34 @@
+---
+Test
+---
+!define TEST_SYSTEM {slim}
+
+!path /Users/tong/Dropbox/softwareTesting2/fitnesseExample/SUT/target/classes
+ 
+|import|
+|fixtures|
+|shop|
+
+!3 Decision Table
+
+!|Order One Product                     	 |
+|Name 		|Price		|Quantity	|total? |
+|Bread		|20.0       	|2		|40.0   |    
+|Jam		|80.0       	|1		|80.0   |
+|เนย		|15.0			|1		|15.0	|
+|กาแฟโบราณ	|12.0			|2		|24.0	|
+
+!3 Script Table
+
+!|script 		|Order Many Products    |
+|add product name |Bread | and price | 20.0 | and stock quantity | 10 |
+|add product name |Jam   | and price | 80.0 | and stock quantity | 20 |
+|order 		|Bread | of | 2 |
+|check      |stock quantity |Bread | 8 |
+|order 		|Jam   | of | 1 |
+|check      |stock quantity |Jam | 19 |
+|check 		|total | 120.0  |
+|order 		|Bread | of | 1 |
+|order 		|Jam   | of | 2 |
+|check      |stock quantity |Bread | 7 |
+|check      |stock quantity |Jam | 17 |

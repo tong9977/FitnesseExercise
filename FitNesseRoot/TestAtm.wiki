@@ -1,0 +1,26 @@
+!define TEST_SYSTEM {slim}
+
+!path /Users/tong/Dropbox/softwareTesting2/fitnesseExample/SUT/target/classes
+
+|import   |
+|fixtures |
+|atm      |
+
+!|script    |One Person Uses Atm        |
+|ensure     |customer id |1 |login with pin |111 |
+|check      |balance     |100.0                  |
+|deposit    |20.0                                |
+|check      |balance     |120.0                  |
+|withdraw   |50.0                                |
+|check      |balance     |70.0                   |
+
+!|script    |Two Person Use Atm        |
+|add customer id |10 |with pin |123 |and balance |500.0 |
+|add customer id |11 |with pin |321 |and balance |100.0 |
+|ensure          |validate customer; |10 |123 |
+|check           |get balance |500.0 |
+|transfer;       |11 |120.0          |
+|check           |get balance |380.0 |
+|reset           |
+|ensure          |validate customer; |11 |321 |
+|check           |get balance |220.0 |
